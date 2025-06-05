@@ -2,7 +2,7 @@ version: "3"
 
 services:
     mysql:
-        image: mysql:8.4.0
+        image: mysql:9.2.0
         container_name: mysql_wordpress
         tty: true
         ports:
@@ -18,8 +18,8 @@ services:
             - wordpress_mysql_network
 
     server:
-        image: wordpress:6.5.4
-        container_name: wordpress-6.5.4
+        image: wordpress:6.7.1
+        container_name: wordpress-6.7.1
         ports:
             - "4282:80"
         volumes:
@@ -34,16 +34,6 @@ services:
         networks:
             - wordpress_mysql_network
 
-    # phpmyadmin:
-    #     image: phpmyadmin:latest
-    #     container_name: phpmyadmin-wordpress
-    #     ports:
-    #         - "4283:80"
-    #     environment:
-    #         PMA_HOST: mysql_wordpress
-    #         MYSQL_ROOT_PASSWORD: 1234
-    #     depends_on:
-    #         - mysql
 
 networks:
     wordpress_mysql_network:
